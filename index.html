@@ -7,47 +7,114 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <meta name="theme-color" content="#070b12" />
   <style>
-    @keyframes betcioRain {
+    @keyframes textFlow {
       from {
-        transform: translate3d(0, -50%, 0);
+        transform: translate3d(0, -42%, 0);
       }
       to {
         transform: translate3d(0, 0, 0);
       }
     }
 
-    .betcio-rain {
-      animation: betcioRain 22s linear infinite;
-      text-shadow: 0 0 18px rgba(245, 196, 0, 0.22);
+    @keyframes dotWave {
+      0%, 100% {
+        transform: translate3d(-2%, 10px, 0) skewY(-7deg);
+      }
+      50% {
+        transform: translate3d(2%, -12px, 0) skewY(-7deg);
+      }
     }
 
-    .betcio-rain-slow {
-      animation-duration: 30s;
+    @keyframes floatShape {
+      0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(var(--r));
+      }
+      50% {
+        transform: translate3d(10px, -18px, 0) rotate(calc(var(--r) + 10deg));
+      }
     }
 
-    .betcio-rain-fast {
-      animation-duration: 17s;
+    .betcio-flow {
+      animation: textFlow 28s linear infinite;
+      text-shadow: 0 0 14px rgba(245, 196, 0, 0.25);
+    }
+
+    .betcio-flow:nth-child(2) {
+      animation-duration: 34s;
+      animation-delay: -9s;
+    }
+
+    .betcio-flow:nth-child(3) {
+      animation-duration: 22s;
+      animation-delay: -5s;
+    }
+
+    .dot-wave {
+      animation: dotWave 8s ease-in-out infinite;
+      background-image: radial-gradient(circle, rgba(245, 196, 0, 0.42) 0 1.4px, transparent 1.8px);
+      background-size: 16px 16px;
+      mask-image: radial-gradient(ellipse at center, black 0 48%, transparent 74%);
+    }
+
+    .wire-shape {
+      animation: floatShape 9s ease-in-out infinite;
+      border: 1px solid rgba(245, 196, 0, 0.34);
+      box-shadow: 0 0 22px rgba(245, 196, 0, 0.12);
+      transform: rotate(var(--r));
+    }
+
+    .wire-shape::before,
+    .wire-shape::after {
+      content: "";
+      position: absolute;
+      inset: 16%;
+      border-top: 1px solid rgba(255, 255, 255, 0.20);
+      transform: rotate(32deg);
+    }
+
+    .wire-shape::after {
+      transform: rotate(-34deg);
+    }
+
+    .mesh-line {
+      background: linear-gradient(90deg, transparent, rgba(245, 196, 0, 0.22), transparent);
+      height: 1px;
+      transform-origin: left center;
     }
   </style>
 </head>
 
 <body class="min-h-screen bg-[#070b12] text-white antialiased">
-  <div aria-hidden="true" class="pointer-events-none fixed inset-0 overflow-hidden bg-[radial-gradient(circle_at_top,#2a2410_0,#070b12_46%,#030506_100%)]">
-    <div class="absolute inset-0 opacity-[0.13]">
-      <div class="betcio-rain absolute -top-full left-[-18%] flex h-[200%] flex-col gap-8 text-5xl font-black uppercase tracking-[0.22em] text-[#f5c400] rotate-[-16deg]">
-        <span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span>
-        <span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span>
+  <div aria-hidden="true" class="pointer-events-none fixed inset-0 overflow-hidden bg-[radial-gradient(circle_at_20%_0%,#101b39_0,#080b17_34%,#210718_72%,#030506_100%)]">
+    <div class="absolute inset-0 bg-[linear-gradient(120deg,rgba(245,196,0,0.10),transparent_26%,rgba(64,191,255,0.09)_52%,transparent_72%,rgba(245,196,0,0.08))]"></div>
+
+    <div class="dot-wave absolute left-[-20%] top-[18%] h-[52%] w-[140%] opacity-70"></div>
+
+    <div class="absolute inset-0 opacity-45">
+      <div class="wire-shape absolute left-[8%] top-[9%] h-16 w-24" style="--r: 38deg;"></div>
+      <div class="wire-shape absolute right-[9%] top-[12%] h-20 w-20" style="--r: -18deg;"></div>
+      <div class="wire-shape absolute left-[3%] bottom-[19%] h-16 w-16" style="--r: 26deg;"></div>
+      <div class="wire-shape absolute right-[14%] bottom-[24%] h-14 w-24" style="--r: -30deg;"></div>
+      <div class="mesh-line absolute left-[8%] top-[33%] w-[84%] rotate-[16deg]"></div>
+      <div class="mesh-line absolute left-[20%] top-[58%] w-[68%] rotate-[-19deg]"></div>
+      <div class="mesh-line absolute left-[42%] top-[12%] w-[42%] rotate-[58deg]"></div>
+    </div>
+
+    <div class="absolute inset-0 opacity-[0.18]">
+      <div class="betcio-flow absolute -top-full left-[5%] flex h-[200%] flex-col gap-7 text-sm font-black uppercase tracking-[0.34em] text-[#f5c400]">
+        <span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span>
+        <span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span>
       </div>
-      <div class="betcio-rain betcio-rain-slow absolute -top-full left-[30%] flex h-[200%] flex-col gap-10 text-6xl font-black uppercase tracking-[0.18em] text-white rotate-[-16deg]">
-        <span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span>
-        <span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span>
+      <div class="betcio-flow absolute -top-full left-[48%] flex h-[200%] flex-col gap-9 text-xs font-black uppercase tracking-[0.42em] text-white">
+        <span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span>
+        <span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span>
       </div>
-      <div class="betcio-rain betcio-rain-fast absolute -top-full right-[-30%] flex h-[200%] flex-col gap-7 text-5xl font-black uppercase tracking-[0.24em] text-[#f5c400] rotate-[-16deg]">
-        <span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span>
-        <span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span>
+      <div class="betcio-flow absolute -top-full right-[4%] flex h-[200%] flex-col gap-6 text-sm font-black uppercase tracking-[0.30em] text-[#f5c400]">
+        <span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span>
+        <span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span>
       </div>
     </div>
-    <div class="absolute inset-0 bg-[#070b12]/55"></div>
+    <div class="absolute inset-0 bg-[#05070d]/42"></div>
   </div>
 
   <main class="relative z-10 min-h-screen px-4 py-6 sm:px-6">
