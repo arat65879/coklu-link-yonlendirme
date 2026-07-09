@@ -16,6 +16,15 @@
       }
     }
 
+    @keyframes wordFall {
+      from {
+        transform: translate3d(0, -18vh, 0);
+      }
+      to {
+        transform: translate3d(0, 118vh, 0);
+      }
+    }
+
     @keyframes dotWave {
       0%, 100% {
         transform: translate3d(0, 8px, 0);
@@ -71,6 +80,20 @@
       animation-delay: -7s;
     }
 
+    .falling-word {
+      animation: wordFall var(--speed) linear infinite;
+      animation-delay: var(--delay);
+      color: rgba(245, 196, 0, 0.28);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.32em;
+      position: absolute;
+      text-shadow: 0 0 12px rgba(245, 196, 0, 0.22);
+      top: 0;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
     .dot-wave {
       animation: dotWave 12s ease-in-out infinite;
       background-image: radial-gradient(circle, rgba(245, 196, 0, 0.34) 0 1.2px, transparent 1.7px);
@@ -124,6 +147,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       .betcio-flow,
+      .falling-word,
       .dot-wave,
       .wire-shape,
       .rep-card::before,
@@ -156,6 +180,14 @@
         <span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span>
         <span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span><span>BETCİO</span>
       </div>
+    </div>
+
+    <div class="absolute inset-0">
+      <span data-moving-bg class="falling-word left-[12%]" style="--speed: 8s; --delay: -1s;">BETCİO</span>
+      <span class="falling-word left-[28%]" style="--speed: 10s; --delay: -5s;">BETCİO</span>
+      <span class="falling-word left-[44%]" style="--speed: 9s; --delay: -2s;">BETCİO</span>
+      <span class="falling-word left-[63%]" style="--speed: 11s; --delay: -7s;">BETCİO</span>
+      <span class="falling-word left-[80%]" style="--speed: 8.5s; --delay: -4s;">BETCİO</span>
     </div>
     <div class="absolute inset-0 bg-[#05070d]/42"></div>
   </div>
