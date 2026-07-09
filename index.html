@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cagri Baglantilari</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="theme-color" content="#09090b" />
+</head>
+
+<body class="min-h-screen bg-zinc-950 text-white antialiased">
+  <main class="min-h-screen px-4 py-6 sm:px-6">
+    <section class="mx-auto flex min-h-[calc(100vh-48px)] w-full max-w-md flex-col justify-center">
+      <div class="mb-8 text-center">
+        <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-lg shadow-black/30">
+          <span class="text-xl font-bold tracking-wide">CL</span>
+        </div>
+        <p class="text-xs font-medium uppercase tracking-[0.28em] text-zinc-500">Call Links</p>
+      </div>
+
+      <div id="app"></div>
+    </section>
+  </main>
+
+  <script>
+    /*
+      PANEL / VERI ALANI
+      Yeni kisi eklemek icin asagidaki formati kopyalayip cogaltman yeterli.
+
+      id: URL'de kullanilacak kisa isim. Turkce karakter ve bosluk kullanma.
+      name: Sayfada gorunecek ad soyad.
+      whatsapp: Kisinin WhatsApp linki.
+      telegram: Kisinin Telegram linki.
+    */
+    const users = [
+      {
+        id: "ahmet",
+        name: "Ahmet Yilmaz",
+        whatsapp: "https://wa.me/905321111111",
+        telegram: "https://t.me/ahmet"
+      },
+      {
+        id: "ayse",
+        name: "Ayse Demir",
+        whatsapp: "https://wa.me/905322222222",
+        telegram: "https://t.me/ayse"
+      },
+      {
+        id: "mehmet",
+        name: "Mehmet Kaya",
+        whatsapp: "https://wa.me/905323333333",
+        telegram: "https://t.me/mehmet"
+      },
+      {
+        id: "zeynep",
+        name: "Zeynep Arslan",
+        whatsapp: "https://wa.me/905324444444",
+        telegram: "https://t.me/zeynep"
+      }
+    ];
+
+    const app = document.getElementById("app");
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function getUserIdFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const queryUser = params.get("user");
+
+      if (queryUser) {
+        return queryUser;
+      }
+
+      return window.location.hash ? window.location.hash.replace("#", "") : "";
+    }
+
+    function setUser(userId) {
+      const cleanUrl = `${window.location.pathname}?user=${encodeURIComponent(userId)}`;
+      window.history.pushState({}, "", cleanUrl);
+      render();
+    }
+
+    function goHome() {
+      window.history.pushState({}, "", window.location.pathname);
+      render();
+    }
+
+    function renderHome() {
+      const userButtons = users.map(user => `
+        <button
+          type="button"
+          onclick="setUser('${escapeHtml(user.id)}')"
+          class="group flex w-full items-center justify-between rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 text-left shadow-lg shadow-black/20 transition duration-200 hover:scale-[1.02] hover:border-white/20 hover:bg-white/[0.08] active:scale-[0.99]"
+        >
+          <span>
+            <span class="block text-base font-semibold text-white">${escapeHtml(user.name)}</span>
+            <span class="mt-1 block text-sm text-zinc-500">Baglantilari goruntule</span>
+          </span>
+
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-zinc-300 transition group-hover:bg-white group-hover:text-zinc-950">
+            &rarr;
+          </span>
+        </button>
+      `).join("");
+
+      app.innerHTML = `
+        <div class="rounded-3xl border border-white/10 bg-zinc-900/60 p-5 shadow-2xl shadow-black/40 backdrop-blur">
+          <div class="mb-5 text-center">
+            <h1 class="text-2xl font-bold tracking-tight text-white">
+              Lutfen gorusmek istediginiz kisiyi seciniz
+            </h1>
+            <p class="mt-2 text-sm leading-6 text-zinc-400">
+              Listeden bir kisi secerek WhatsApp veya Telegram baglantilarina ulasabilirsiniz.
+            </p>
+          </div>
+
+          <div class="grid gap-3">
+            ${userButtons}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDetail(user) {
+      app.innerHTML = `
+        <div class="rounded-3xl border border-white/10 bg-zinc-900/70 p-6 text-center shadow-2xl shadow-black/40 backdrop-blur">
+          <div class="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-white/10 bg-white/5 text-2xl font-bold shadow-lg shadow-black/30">
+            ${escapeHtml(getInitials(user.name))}
+          </div>
+
+          <h1 class="text-3xl font-bold tracking-tight text-white">
+            ${escapeHtml(user.name)}
+          </h1>
+
+          <p class="mt-2 text-sm font-medium uppercase tracking-[0.24em] text-zinc-500">
+            Cagri Baglantilari
+          </p>
+
+          <div class="mt-8 grid gap-4">
+            <a
+              href="${escapeHtml(user.whatsapp)}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex w-full items-center justify-center gap-3 rounded-2xl bg-emerald-500 px-5 py-4 text-base font-bold text-white shadow-lg shadow-emerald-950/40 transition duration-200 hover:scale-[1.03] hover:bg-emerald-400 active:scale-[0.99]"
+            >
+              <span class="text-xl">W</span>
+              WhatsApp ile Gorus
+            </a>
+
+            <a
+              href="${escapeHtml(user.telegram)}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex w-full items-center justify-center gap-3 rounded-2xl bg-sky-500 px-5 py-4 text-base font-bold text-white shadow-lg shadow-sky-950/40 transition duration-200 hover:scale-[1.03] hover:bg-sky-400 active:scale-[0.99]"
+            >
+              <span class="text-xl">T</span>
+              Telegram ile Gorus
+            </a>
+          </div>
+
+          <button
+            type="button"
+            onclick="goHome()"
+            class="mt-7 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-zinc-300 transition duration-200 hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
+          >
+            Geri Don
+          </button>
+        </div>
+      `;
+    }
+
+    function renderNotFound() {
+      app.innerHTML = `
+        <div class="rounded-3xl border border-red-500/20 bg-red-950/20 p-6 text-center shadow-2xl shadow-black/40">
+          <h1 class="text-2xl font-bold text-white">Kisi bulunamadi</h1>
+          <p class="mt-2 text-sm leading-6 text-red-100/70">
+            Bu baglantiya ait bir kullanici yok veya link hatali yazilmis olabilir.
+          </p>
+
+          <button
+            type="button"
+            onclick="goHome()"
+            class="mt-6 w-full rounded-2xl bg-white px-5 py-3 text-sm font-bold text-zinc-950 transition duration-200 hover:scale-[1.02] active:scale-[0.99]"
+          >
+            Listeye Don
+          </button>
+        </div>
+      `;
+    }
+
+    function getInitials(name) {
+      return name
+        .trim()
+        .split(" ")
+        .slice(0, 2)
+        .map(part => part.charAt(0).toUpperCase())
+        .join("");
+    }
+
+    function render() {
+      const userId = getUserIdFromUrl();
+
+      if (!userId) {
+        renderHome();
+        return;
+      }
+
+      const selectedUser = users.find(user => user.id === userId);
+
+      if (!selectedUser) {
+        renderNotFound();
+        return;
+      }
+
+      renderDetail(selectedUser);
+    }
+
+    window.addEventListener("popstate", render);
+    window.addEventListener("hashchange", render);
+
+    render();
+  </script>
+</body>
+</html>
