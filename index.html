@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
@@ -33,49 +33,47 @@
       telegram: Kisinin Telegram linki.
     */
     const users = [
-      { id: "elisa", name: "EL\u0130SA", whatsapp: "", telegram: "" },
-      { id: "orkun", name: "ORKUN", whatsapp: "", telegram: "" },
-      { id: "melis", name: "MEL\u0130S", whatsapp: "", telegram: "" },
-      { id: "alp", name: "ALP", whatsapp: "", telegram: "" },
-      { id: "eren", name: "EREN", whatsapp: "", telegram: "" },
-      { id: "demet", name: "DEMET", whatsapp: "", telegram: "" },
-      { id: "cem", name: "CEM", whatsapp: "", telegram: "" },
-      { id: "dilara", name: "D\u0130LARA", whatsapp: "", telegram: "" },
-      { id: "ilayda", name: "\u0130LAYDA", whatsapp: "", telegram: "" },
-      { id: "eylem", name: "EYLEM", whatsapp: "", telegram: "" },
-      { id: "okan", name: "OKAN", whatsapp: "", telegram: "" },
-      { id: "azra", name: "AZRA", whatsapp: "", telegram: "" },
-      { id: "leyla", name: "LEYLA", whatsapp: "", telegram: "" },
-      { id: "tansel", name: "TANSEL", whatsapp: "", telegram: "" },
-      { id: "arda", name: "ARDA", whatsapp: "", telegram: "" },
-      { id: "ayaz", name: "AYAZ", whatsapp: "", telegram: "" },
-      { id: "serhat", name: "SERHAT", whatsapp: "", telegram: "" },
-      { id: "defne", name: "DEFNE", whatsapp: "", telegram: "" },
-      { id: "asena", name: "ASENA", whatsapp: "", telegram: "" },
-      { id: "mehmet", name: "MEHMET", whatsapp: "", telegram: "" },
-      { id: "dogukan", name: "DO\u011eUKAN", whatsapp: "", telegram: "" },
-      { id: "zehra", name: "ZEHRA", whatsapp: "", telegram: "" },
-      { id: "deniz", name: "DEN\u0130Z", whatsapp: "", telegram: "" },
-      { id: "sude", name: "SUDE", whatsapp: "", telegram: "" },
-      { id: "tekin", name: "TEK\u0130N", whatsapp: "", telegram: "" },
-      { id: "afra", name: "AFRA", whatsapp: "", telegram: "" },
-      { id: "umit", name: "\u00dcM\u0130T", whatsapp: "", telegram: "" },
-      { id: "emir", name: "EM\u0130R", whatsapp: "", telegram: "" },
-      { id: "gozde", name: "G\u00d6ZDE", whatsapp: "", telegram: "" },
-      { id: "berk", name: "BERK", whatsapp: "", telegram: "" },
-      { id: "sercan", name: "SERCAN", whatsapp: "", telegram: "" },
-      { id: "cagri", name: "\u00c7A\u011eRI", whatsapp: "", telegram: "" },
-      { id: "idil", name: "\u0130D\u0130L", whatsapp: "", telegram: "" },
-      { id: "celik", name: "\u00c7EL\u0130K", whatsapp: "", telegram: "" },
-      { id: "gorkem", name: "G\u00d6RKEM", whatsapp: "", telegram: "" },
-      { id: "deren", name: "DEREN", whatsapp: "", telegram: "" },
-      { id: "sarp", name: "SARP", whatsapp: "", telegram: "" },
-      { id: "mert", name: "MERT", whatsapp: "", telegram: "" },
-      { id: "ahsen", name: "AHSEN", whatsapp: "", telegram: "" },
-      { id: "kenan", name: "KENAN", whatsapp: "", telegram: "" },
-      { id: "simay", name: "S\u0130MAY", whatsapp: "", telegram: "" },
-      { id: "esref", name: "E\u015eREF", whatsapp: "", telegram: "" },
-      { id: "bartu", name: "BARTU", whatsapp: "", telegram: "" }
+      { id: "ahsen", name: "AHSEN", whatsapp: "", telegram: "/api/telegram?id=ahsen" },
+      { id: "alp", name: "ALP", whatsapp: "", telegram: "/api/telegram?id=alp" },
+      { id: "asena", name: "ASENA", whatsapp: "", telegram: "/api/telegram?id=asena" },
+      { id: "ayaz", name: "AYAZ", whatsapp: "", telegram: "/api/telegram?id=ayaz" },
+      { id: "azra", name: "AZRA", whatsapp: "", telegram: "/api/telegram?id=azra" },
+      { id: "baris", name: "BARI\u015e", whatsapp: "", telegram: "/api/telegram?id=baris" },
+      { id: "bartu", name: "BARTU", whatsapp: "", telegram: "/api/telegram?id=bartu" },
+      { id: "berk", name: "BERK", whatsapp: "", telegram: "/api/telegram?id=berk" },
+      { id: "betcio-tg-destek", name: "BETCIO TG DESTEK HATTI", whatsapp: "", telegram: "/api/telegram?id=betcio-tg-destek" },
+      { id: "celik", name: "\u00c7EL\u0130K", whatsapp: "", telegram: "/api/telegram?id=celik" },
+      { id: "cem", name: "CEM", whatsapp: "", telegram: "/api/telegram?id=cem" },
+      { id: "defne", name: "DEFNE", whatsapp: "", telegram: "/api/telegram?id=defne" },
+      { id: "demet", name: "DEMET", whatsapp: "", telegram: "/api/telegram?id=demet" },
+      { id: "deniz", name: "DEN\u0130Z", whatsapp: "", telegram: "/api/telegram?id=deniz" },
+      { id: "deren", name: "DEREN", whatsapp: "", telegram: "/api/telegram?id=deren" },
+      { id: "dilara", name: "D\u0130LARA", whatsapp: "", telegram: "/api/telegram?id=dilara" },
+      { id: "dogukan", name: "DO\u011eUKAN", whatsapp: "", telegram: "/api/telegram?id=dogukan" },
+      { id: "ece", name: "ECE", whatsapp: "", telegram: "/api/telegram?id=ece" },
+      { id: "elisa", name: "EL\u0130SA", whatsapp: "", telegram: "/api/telegram?id=elisa" },
+      { id: "emir", name: "EM\u0130R", whatsapp: "", telegram: "/api/telegram?id=emir" },
+      { id: "eren", name: "EREN", whatsapp: "", telegram: "/api/telegram?id=eren" },
+      { id: "esref", name: "E\u015eREF", whatsapp: "", telegram: "/api/telegram?id=esref" },
+      { id: "eylem", name: "EYLEM", whatsapp: "", telegram: "/api/telegram?id=eylem" },
+      { id: "gorkem", name: "G\u00d6RKEM", whatsapp: "", telegram: "/api/telegram?id=gorkem" },
+      { id: "gozde", name: "G\u00d6ZDE", whatsapp: "", telegram: "/api/telegram?id=gozde" },
+      { id: "idil", name: "\u0130D\u0130L", whatsapp: "", telegram: "/api/telegram?id=idil" },
+      { id: "ilayda", name: "\u0130LAYDA", whatsapp: "", telegram: "/api/telegram?id=ilayda" },
+      { id: "leyla", name: "LEYLA", whatsapp: "", telegram: "/api/telegram?id=leyla" },
+      { id: "mehmet", name: "MEHMET", whatsapp: "", telegram: "/api/telegram?id=mehmet" },
+      { id: "melis", name: "MEL\u0130S", whatsapp: "", telegram: "/api/telegram?id=melis" },
+      { id: "mert", name: "MERT", whatsapp: "", telegram: "/api/telegram?id=mert" },
+      { id: "okan", name: "OKAN", whatsapp: "", telegram: "/api/telegram?id=okan" },
+      { id: "orkun", name: "ORKUN", whatsapp: "", telegram: "/api/telegram?id=orkun" },
+      { id: "ruya", name: "R\u00dcYA", whatsapp: "", telegram: "/api/telegram?id=ruya" },
+      { id: "sarp", name: "SARP", whatsapp: "", telegram: "/api/telegram?id=sarp" },
+      { id: "sercan", name: "SERCAN", whatsapp: "", telegram: "/api/telegram?id=sercan" },
+      { id: "serhat", name: "SERHAT", whatsapp: "", telegram: "/api/telegram?id=serhat" },
+      { id: "simay", name: "S\u0130MAY", whatsapp: "", telegram: "/api/telegram?id=simay" },
+      { id: "sude", name: "SUDE", whatsapp: "", telegram: "/api/telegram?id=sude" },
+      { id: "tansel", name: "TANSEL", whatsapp: "", telegram: "/api/telegram?id=tansel" },
+      { id: "umit", name: "\u00dcM\u0130T", whatsapp: "", telegram: "/api/telegram?id=umit" }
     ];
 
     const app = document.getElementById("app");
@@ -116,12 +114,12 @@
         .toLocaleLowerCase("tr-TR")
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
-        .replace(/ı/g, "i")
-        .replace(/ğ/g, "g")
-        .replace(/ü/g, "u")
-        .replace(/ş/g, "s")
-        .replace(/ö/g, "o")
-        .replace(/ç/g, "c");
+        .replace(/Ä±/g, "i")
+        .replace(/ÄŸ/g, "g")
+        .replace(/Ã¼/g, "u")
+        .replace(/ÅŸ/g, "s")
+        .replace(/Ã¶/g, "o")
+        .replace(/Ã§/g, "c");
     }
 
     function getFilteredUsers() {
@@ -219,7 +217,7 @@
 
           <div id="representativesPanel">
             <label class="mb-4 flex items-center gap-3 rounded-2xl border border-emerald-300/20 bg-white/[0.08] px-4 py-3 shadow-inner shadow-black/20 focus-within:border-lime-300/70">
-              <span class="text-lg text-lime-300">⌕</span>
+              <span class="text-lg text-lime-300">âŒ•</span>
               <input
                 id="searchInput"
                 type="search"
@@ -403,3 +401,5 @@
   </script>
 </body>
 </html>
+
+
