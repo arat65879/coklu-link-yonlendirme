@@ -54,20 +54,6 @@
       }
     }
 
-    @keyframes cardSweep {
-      0% {
-        transform: translateX(-140%) skewX(-18deg);
-        opacity: 0;
-      }
-      18% {
-        opacity: 0.35;
-      }
-      42%, 100% {
-        transform: translateX(180%) skewX(-18deg);
-        opacity: 0;
-      }
-    }
-
     .betcio-flow {
       animation: textFlow 18s linear infinite;
       text-shadow: 0 0 14px rgba(245, 196, 0, 0.25);
@@ -130,17 +116,6 @@
       transform-origin: left center;
     }
 
-    .rep-card::before {
-      animation: cardSweep 3.4s ease-in-out infinite;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.26), transparent);
-      content: "";
-      height: 140%;
-      left: 0;
-      position: absolute;
-      top: -20%;
-      width: 42%;
-    }
-
     .rep-cta {
       animation: ctaPulse 2.8s ease-in-out infinite;
     }
@@ -150,7 +125,6 @@
       .falling-word,
       .dot-wave,
       .wire-shape,
-      .rep-card::before,
       .rep-cta {
         animation: none;
       }
